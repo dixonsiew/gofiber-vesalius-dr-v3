@@ -1,0 +1,1436 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Vesalius-Dr Backend API description.",
+        "title": "Swagger Vesalius-Dr Backend API",
+        "contact": {},
+        "version": "1.0"
+    },
+    "basePath": "/mobile_central_dr-1.0.0",
+    "paths": {
+        "/login": {
+            "post": {
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Auth"
+                ],
+                "parameters": [
+                    {
+                        "description": "Login Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.LoginDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/user": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.DoctorAppUser"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/add-machine-id": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "description": "AddMachineId Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PostMachineInfo"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/user/change-password": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "description": "ChangePassword Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PostChangePasswordDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/user/email/{email}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Email",
+                        "name": "email",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.DoctorAppUser"
+                        }
+                    }
+                }
+            }
+        },
+        "/user/first-time-change-password": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "description": "ChangePassword Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PostChangePasswordDto"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/user/userId/{userId}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "User"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "UserId",
+                        "name": "userId",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.DoctorAppUser"
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/get-doctor-todo-notification-details/{branchId}/{mcr}/{prn}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "PRN",
+                        "name": "prn",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.DoctorToDoNotification"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/get-doctor-todo-notification/{branchId}/{mcr}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.DoctorToDoNotification"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/get-investigation-report/{branchId}/{mcr}/{orderDate}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "OrderDate",
+                        "name": "orderDate",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.InvestigationReport"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/get-pdf-investigation-report/{branchId}/{mcr}/{accessionNo}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/octet-stream"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "AccessionNo",
+                        "name": "accessionNo",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.InvestigationReport"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/getInpatientQueueDetailByPrn/{branchId}/{mcr}/{prn}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "PRN",
+                        "name": "prn",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/model.InpatientQueueList"
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/getInpatientQueueDetailList/{branchId}/{mcr}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.InpatientQueueList"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/getOutpatientQueueDetailList/{branchId}/{queueCriteria}/{mcr}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "QueueCriteria",
+                        "name": "queueCriteria",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.OutpatientQueueList"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/getOutpatientQueueSumarryList/{branchId}/{mcr}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.OutpatientQueueSummary"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/patient-allergy/{branchId}/{prn}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "PRN",
+                        "name": "prn",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/model.NovaPatientAlert"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/patient-data/{branchId}/{prn}": {
+            "get": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "PRN",
+                        "name": "prn",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/xmlmodel.Patient"
+                        }
+                    }
+                }
+            }
+        },
+        "/vesalius/process-doctor-review-investigation/{branchId}/{mcr}": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "description": "ProcessDoctorReviewInvestigation Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PostProcessDoctorReviewInvestigationDto"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/vesalius/process-doctor-todo-ack/{branchId}/{mcr}": {
+            "post": {
+                "security": [
+                    {
+                        "BearerAuth": []
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Vesalius"
+                ],
+                "parameters": [
+                    {
+                        "description": "ProcessDoctorToDoAcknowledge Request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/dto.PostProcessDoctorToDoAcknowledgeDto"
+                        }
+                    },
+                    {
+                        "type": "string",
+                        "description": "BranchId",
+                        "name": "branchId",
+                        "in": "path"
+                    },
+                    {
+                        "type": "string",
+                        "description": "MCR",
+                        "name": "mcr",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "dto.LoginDto": {
+            "type": "object",
+            "required": [
+                "password",
+                "username"
+            ],
+            "properties": {
+                "fromBiometric": {
+                    "type": "integer"
+                },
+                "password": {
+                    "type": "string",
+                    "default": "password",
+                    "minLength": 1
+                },
+                "username": {
+                    "type": "string",
+                    "default": "nova.doctor",
+                    "minLength": 1
+                }
+            }
+        },
+        "dto.PostChangePasswordDto": {
+            "type": "object",
+            "required": [
+                "newPassword",
+                "oldPassword"
+            ],
+            "properties": {
+                "newPassword": {
+                    "type": "string",
+                    "minLength": 1
+                },
+                "oldPassword": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "dto.PostMachineInfo": {
+            "type": "object",
+            "required": [
+                "machineId"
+            ],
+            "properties": {
+                "machineId": {
+                    "type": "string",
+                    "minLength": 1
+                }
+            }
+        },
+        "dto.PostProcessDoctorReviewInvestigationDto": {
+            "type": "object",
+            "properties": {
+                "accessionNo": {
+                    "type": "string"
+                },
+                "prn": {
+                    "type": "string"
+                },
+                "reviewDate": {
+                    "type": "string"
+                },
+                "reviewDoctor": {
+                    "type": "string"
+                },
+                "reviewTime": {
+                    "type": "string"
+                }
+            }
+        },
+        "dto.PostProcessDoctorToDoAcknowledgeDto": {
+            "type": "object",
+            "properties": {
+                "accessionNo": {
+                    "type": "string"
+                },
+                "notificationType": {
+                    "type": "string"
+                },
+                "remark": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.DoctorAppUser": {
+            "type": "object",
+            "properties": {
+                "branch": {
+                    "type": "string"
+                },
+                "contact_number": {
+                    "type": "string"
+                },
+                "dob": {
+                    "type": "string"
+                },
+                "doctor_app_user_id": {
+                    "type": "integer"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "firstTimeLogin": {
+                    "type": "boolean"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "machine_id": {
+                    "type": "string"
+                },
+                "mcr": {
+                    "type": "string"
+                },
+                "middle_name": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "sex": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "username": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.DoctorToDoNotification": {
+            "type": "object",
+            "properties": {
+                "accessionNo": {
+                    "type": "string"
+                },
+                "accountNo": {
+                    "type": "string"
+                },
+                "acknowledgementFlag": {
+                    "type": "boolean"
+                },
+                "dischargeSummary": {
+                    "type": "string"
+                },
+                "discontinueBy": {
+                    "type": "string"
+                },
+                "discontinueDate": {
+                    "type": "string"
+                },
+                "discontinueReason": {
+                    "type": "string"
+                },
+                "discontinueTime": {
+                    "type": "string"
+                },
+                "dispenseQuantity": {
+                    "type": "string"
+                },
+                "doctorName": {
+                    "type": "string"
+                },
+                "instruction": {
+                    "type": "string"
+                },
+                "itemCode": {
+                    "type": "string"
+                },
+                "itemDesc": {
+                    "type": "string"
+                },
+                "itemQuantity": {
+                    "type": "string"
+                },
+                "lastDispenseTime": {
+                    "type": "string"
+                },
+                "lastServedTime": {
+                    "type": "string"
+                },
+                "lastUpdateDate": {
+                    "type": "string"
+                },
+                "mcr": {
+                    "type": "string"
+                },
+                "notificationType": {
+                    "type": "string"
+                },
+                "notification_id": {
+                    "type": "integer"
+                },
+                "orderBy": {
+                    "type": "string"
+                },
+                "orderDate": {
+                    "type": "string"
+                },
+                "orderTime": {
+                    "type": "string"
+                },
+                "patientName": {
+                    "type": "string"
+                },
+                "prn": {
+                    "type": "string"
+                },
+                "servedQuantity": {
+                    "type": "string"
+                },
+                "uom": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.InpatientQueueList": {
+            "type": "object",
+            "properties": {
+                "admissionDate": {
+                    "type": "string"
+                },
+                "admissionTime": {
+                    "type": "string"
+                },
+                "age": {
+                    "type": "string"
+                },
+                "bed": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "hasOnArrivalOrders": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "lastUpdateDate": {
+                    "type": "string"
+                },
+                "mcr": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "patientStatus": {
+                    "type": "string"
+                },
+                "patientType": {
+                    "type": "string"
+                },
+                "prn": {
+                    "type": "string"
+                },
+                "queueCriteria": {
+                    "type": "string"
+                },
+                "queueNumber": {
+                    "type": "string"
+                },
+                "registrationDate": {
+                    "type": "string"
+                },
+                "registrationTime": {
+                    "type": "string"
+                },
+                "routedBy": {
+                    "type": "string"
+                },
+                "sexCode": {
+                    "type": "string"
+                },
+                "sexDesc": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "triageDiscriminator": {
+                    "type": "string"
+                },
+                "triageScore": {
+                    "type": "string"
+                },
+                "vipFlag": {
+                    "type": "string"
+                },
+                "visitNumber": {
+                    "type": "string"
+                },
+                "visitType": {
+                    "type": "string"
+                },
+                "vitalAreAvailable": {
+                    "type": "string"
+                },
+                "ward": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.InvestigationReport": {
+            "type": "object",
+            "properties": {
+                "accessionNo": {
+                    "type": "string"
+                },
+                "accountNo": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "investigationType": {
+                    "type": "string"
+                },
+                "lastUpdateDate": {
+                    "type": "string"
+                },
+                "orderDate": {
+                    "type": "string"
+                },
+                "orderDoctorMcr": {
+                    "type": "string"
+                },
+                "patientName": {
+                    "type": "string"
+                },
+                "prn": {
+                    "type": "string"
+                },
+                "remark": {
+                    "type": "string"
+                },
+                "reportType": {
+                    "type": "string"
+                },
+                "result": {
+                    "type": "string"
+                },
+                "resultDate": {
+                    "type": "string"
+                },
+                "reviewInvestigationFlag": {
+                    "type": "boolean"
+                },
+                "serviceCode": {
+                    "type": "string"
+                },
+                "serviceDesc": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.NovaPatientAlert": {
+            "type": "object",
+            "properties": {
+                "alertType": {
+                    "type": "string"
+                },
+                "allergyType": {
+                    "type": "string"
+                },
+                "createdBy": {
+                    "type": "string"
+                },
+                "creationDate": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "ialertRefNod": {
+                    "type": "integer"
+                },
+                "inactiveDateTime": {
+                    "type": "string"
+                },
+                "inactiveReason": {
+                    "type": "string"
+                },
+                "inactiveUser": {
+                    "type": "string"
+                },
+                "prn": {
+                    "type": "string"
+                },
+                "probability": {
+                    "type": "string"
+                },
+                "reaction": {
+                    "type": "string"
+                },
+                "route": {
+                    "type": "string"
+                },
+                "system": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.OutpatientQueueList": {
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "string"
+                },
+                "appointmentDate": {
+                    "type": "string"
+                },
+                "appointmentTime": {
+                    "type": "string"
+                },
+                "firstName": {
+                    "type": "string"
+                },
+                "hasOnArrivalOrders": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "lastUpdateDate": {
+                    "type": "string"
+                },
+                "mcr": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string"
+                },
+                "nationality": {
+                    "type": "string"
+                },
+                "patientStatus": {
+                    "type": "string"
+                },
+                "patientType": {
+                    "type": "string"
+                },
+                "prn": {
+                    "type": "string"
+                },
+                "queueCriteria": {
+                    "type": "string"
+                },
+                "queueNumber": {
+                    "type": "string"
+                },
+                "registrationDate": {
+                    "type": "string"
+                },
+                "registrationTime": {
+                    "type": "string"
+                },
+                "routedBy": {
+                    "type": "string"
+                },
+                "sexCode": {
+                    "type": "string"
+                },
+                "sexDesc": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "triageDiscriminator": {
+                    "type": "string"
+                },
+                "triageScore": {
+                    "type": "string"
+                },
+                "vipFlag": {
+                    "type": "string"
+                },
+                "visitNumber": {
+                    "type": "string"
+                },
+                "visitType": {
+                    "type": "string"
+                },
+                "vitalAreAvailable": {
+                    "type": "string"
+                }
+            }
+        },
+        "model.OutpatientQueueSummary": {
+            "type": "object",
+            "properties": {
+                "imageName": {
+                    "type": "string"
+                },
+                "lastUpdateDateTime": {
+                    "type": "string"
+                },
+                "linkName": {
+                    "type": "string"
+                },
+                "queueCount": {
+                    "type": "integer"
+                },
+                "queueCriteria": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.ChargeCategory": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.ContactNumber": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "type": "string"
+                },
+                "home": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.Document": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "expireDate": {
+                    "type": "string"
+                },
+                "value": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.HomeAddress": {
+            "type": "object",
+            "properties": {
+                "address1": {
+                    "type": "string"
+                },
+                "address2": {
+                    "type": "string"
+                },
+                "address3": {
+                    "type": "string"
+                },
+                "cityState": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "postalCode": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.Name": {
+            "type": "object",
+            "properties": {
+                "firstName": {
+                    "type": "string"
+                },
+                "lastName": {
+                    "type": "string"
+                },
+                "middleName": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.Nationality": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.Patient": {
+            "type": "object",
+            "properties": {
+                "chargeCategory": {
+                    "$ref": "#/definitions/xmlmodel.ChargeCategory"
+                },
+                "contactNumber": {
+                    "$ref": "#/definitions/xmlmodel.ContactNumber"
+                },
+                "dob": {
+                    "type": "string"
+                },
+                "documents": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/xmlmodel.Document"
+                    }
+                },
+                "homeAddress": {
+                    "$ref": "#/definitions/xmlmodel.HomeAddress"
+                },
+                "name": {
+                    "$ref": "#/definitions/xmlmodel.Name"
+                },
+                "nationality": {
+                    "$ref": "#/definitions/xmlmodel.Nationality"
+                },
+                "paymentClass": {
+                    "$ref": "#/definitions/xmlmodel.PaymentClass"
+                },
+                "prn": {
+                    "type": "string"
+                },
+                "resident": {
+                    "type": "string"
+                },
+                "sex": {
+                    "$ref": "#/definitions/xmlmodel.Sex"
+                }
+            }
+        },
+        "xmlmodel.PaymentClass": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        },
+        "xmlmodel.Sex": {
+            "type": "object",
+            "properties": {
+                "code": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "BearerAuth": {
+            "description": "Type \"Bearer\" followed by a space and JWT token.",
+            "type": "apiKey",
+            "name": "Authorization",
+            "in": "header"
+        }
+    }
+}

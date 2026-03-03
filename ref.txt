@@ -1,0 +1,2 @@
+https://202.73.42.183:43902/mobile_central_dr-1.0.0/docs/index.html
+https://202.73.42.183:43902/mobile_central_dr-1.0.0/static/rapidoc.html

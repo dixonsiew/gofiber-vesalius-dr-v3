@@ -1,0 +1,911 @@
+basePath: /mobile_central_dr-1.0.0
+definitions:
+  dto.LoginDto:
+    properties:
+      fromBiometric:
+        type: integer
+      password:
+        default: password
+        minLength: 1
+        type: string
+      username:
+        default: nova.doctor
+        minLength: 1
+        type: string
+    required:
+    - password
+    - username
+    type: object
+  dto.PostChangePasswordDto:
+    properties:
+      newPassword:
+        minLength: 1
+        type: string
+      oldPassword:
+        minLength: 1
+        type: string
+    required:
+    - newPassword
+    - oldPassword
+    type: object
+  dto.PostMachineInfo:
+    properties:
+      machineId:
+        minLength: 1
+        type: string
+    required:
+    - machineId
+    type: object
+  dto.PostProcessDoctorReviewInvestigationDto:
+    properties:
+      accessionNo:
+        type: string
+      prn:
+        type: string
+      reviewDate:
+        type: string
+      reviewDoctor:
+        type: string
+      reviewTime:
+        type: string
+    type: object
+  dto.PostProcessDoctorToDoAcknowledgeDto:
+    properties:
+      accessionNo:
+        type: string
+      notificationType:
+        type: string
+      remark:
+        type: string
+    type: object
+  model.DoctorAppUser:
+    properties:
+      branch:
+        type: string
+      contact_number:
+        type: string
+      dob:
+        type: string
+      doctor_app_user_id:
+        type: integer
+      email:
+        type: string
+      first_name:
+        type: string
+      firstTimeLogin:
+        type: boolean
+      last_name:
+        type: string
+      machine_id:
+        type: string
+      mcr:
+        type: string
+      middle_name:
+        type: string
+      nationality:
+        type: string
+      role:
+        type: string
+      sex:
+        type: string
+      title:
+        type: string
+      username:
+        type: string
+    type: object
+  model.DoctorToDoNotification:
+    properties:
+      accessionNo:
+        type: string
+      accountNo:
+        type: string
+      acknowledgementFlag:
+        type: boolean
+      dischargeSummary:
+        type: string
+      discontinueBy:
+        type: string
+      discontinueDate:
+        type: string
+      discontinueReason:
+        type: string
+      discontinueTime:
+        type: string
+      dispenseQuantity:
+        type: string
+      doctorName:
+        type: string
+      instruction:
+        type: string
+      itemCode:
+        type: string
+      itemDesc:
+        type: string
+      itemQuantity:
+        type: string
+      lastDispenseTime:
+        type: string
+      lastServedTime:
+        type: string
+      lastUpdateDate:
+        type: string
+      mcr:
+        type: string
+      notification_id:
+        type: integer
+      notificationType:
+        type: string
+      orderBy:
+        type: string
+      orderDate:
+        type: string
+      orderTime:
+        type: string
+      patientName:
+        type: string
+      prn:
+        type: string
+      servedQuantity:
+        type: string
+      uom:
+        type: string
+    type: object
+  model.InpatientQueueList:
+    properties:
+      admissionDate:
+        type: string
+      admissionTime:
+        type: string
+      age:
+        type: string
+      bed:
+        type: string
+      firstName:
+        type: string
+      hasOnArrivalOrders:
+        type: string
+      id:
+        type: integer
+      lastName:
+        type: string
+      lastUpdateDate:
+        type: string
+      mcr:
+        type: string
+      middleName:
+        type: string
+      nationality:
+        type: string
+      patientStatus:
+        type: string
+      patientType:
+        type: string
+      prn:
+        type: string
+      queueCriteria:
+        type: string
+      queueNumber:
+        type: string
+      registrationDate:
+        type: string
+      registrationTime:
+        type: string
+      routedBy:
+        type: string
+      sexCode:
+        type: string
+      sexDesc:
+        type: string
+      title:
+        type: string
+      triageDiscriminator:
+        type: string
+      triageScore:
+        type: string
+      vipFlag:
+        type: string
+      visitNumber:
+        type: string
+      visitType:
+        type: string
+      vitalAreAvailable:
+        type: string
+      ward:
+        type: string
+    type: object
+  model.InvestigationReport:
+    properties:
+      accessionNo:
+        type: string
+      accountNo:
+        type: string
+      id:
+        type: integer
+      investigationType:
+        type: string
+      lastUpdateDate:
+        type: string
+      orderDate:
+        type: string
+      orderDoctorMcr:
+        type: string
+      patientName:
+        type: string
+      prn:
+        type: string
+      remark:
+        type: string
+      reportType:
+        type: string
+      result:
+        type: string
+      resultDate:
+        type: string
+      reviewInvestigationFlag:
+        type: boolean
+      serviceCode:
+        type: string
+      serviceDesc:
+        type: string
+    type: object
+  model.NovaPatientAlert:
+    properties:
+      alertType:
+        type: string
+      allergyType:
+        type: string
+      createdBy:
+        type: string
+      creationDate:
+        type: string
+      description:
+        type: string
+      ialertRefNod:
+        type: integer
+      inactiveDateTime:
+        type: string
+      inactiveReason:
+        type: string
+      inactiveUser:
+        type: string
+      prn:
+        type: string
+      probability:
+        type: string
+      reaction:
+        type: string
+      route:
+        type: string
+      system:
+        type: string
+    type: object
+  model.OutpatientQueueList:
+    properties:
+      age:
+        type: string
+      appointmentDate:
+        type: string
+      appointmentTime:
+        type: string
+      firstName:
+        type: string
+      hasOnArrivalOrders:
+        type: string
+      id:
+        type: integer
+      lastName:
+        type: string
+      lastUpdateDate:
+        type: string
+      mcr:
+        type: string
+      middleName:
+        type: string
+      nationality:
+        type: string
+      patientStatus:
+        type: string
+      patientType:
+        type: string
+      prn:
+        type: string
+      queueCriteria:
+        type: string
+      queueNumber:
+        type: string
+      registrationDate:
+        type: string
+      registrationTime:
+        type: string
+      routedBy:
+        type: string
+      sexCode:
+        type: string
+      sexDesc:
+        type: string
+      title:
+        type: string
+      triageDiscriminator:
+        type: string
+      triageScore:
+        type: string
+      vipFlag:
+        type: string
+      visitNumber:
+        type: string
+      visitType:
+        type: string
+      vitalAreAvailable:
+        type: string
+    type: object
+  model.OutpatientQueueSummary:
+    properties:
+      imageName:
+        type: string
+      lastUpdateDateTime:
+        type: string
+      linkName:
+        type: string
+      queueCount:
+        type: integer
+      queueCriteria:
+        type: string
+    type: object
+  xmlmodel.ChargeCategory:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+    type: object
+  xmlmodel.ContactNumber:
+    properties:
+      email:
+        type: string
+      home:
+        type: string
+    type: object
+  xmlmodel.Document:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+      expireDate:
+        type: string
+      value:
+        type: string
+    type: object
+  xmlmodel.HomeAddress:
+    properties:
+      address1:
+        type: string
+      address2:
+        type: string
+      address3:
+        type: string
+      cityState:
+        type: string
+      country:
+        type: string
+      postalCode:
+        type: string
+    type: object
+  xmlmodel.Name:
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+      middleName:
+        type: string
+      title:
+        type: string
+    type: object
+  xmlmodel.Nationality:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+    type: object
+  xmlmodel.Patient:
+    properties:
+      chargeCategory:
+        $ref: '#/definitions/xmlmodel.ChargeCategory'
+      contactNumber:
+        $ref: '#/definitions/xmlmodel.ContactNumber'
+      dob:
+        type: string
+      documents:
+        items:
+          $ref: '#/definitions/xmlmodel.Document'
+        type: array
+      homeAddress:
+        $ref: '#/definitions/xmlmodel.HomeAddress'
+      name:
+        $ref: '#/definitions/xmlmodel.Name'
+      nationality:
+        $ref: '#/definitions/xmlmodel.Nationality'
+      paymentClass:
+        $ref: '#/definitions/xmlmodel.PaymentClass'
+      prn:
+        type: string
+      resident:
+        type: string
+      sex:
+        $ref: '#/definitions/xmlmodel.Sex'
+    type: object
+  xmlmodel.PaymentClass:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+    type: object
+  xmlmodel.Sex:
+    properties:
+      code:
+        type: string
+      description:
+        type: string
+    type: object
+info:
+  contact: {}
+  description: Vesalius-Dr Backend API description.
+  title: Swagger Vesalius-Dr Backend API
+  version: "1.0"
+paths:
+  /login:
+    post:
+      parameters:
+      - description: Login Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.LoginDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      tags:
+      - Auth
+  /user:
+    get:
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.DoctorAppUser'
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /user/add-machine-id:
+    post:
+      parameters:
+      - description: AddMachineId Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PostMachineInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /user/change-password:
+    post:
+      parameters:
+      - description: ChangePassword Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PostChangePasswordDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /user/email/{email}:
+    get:
+      parameters:
+      - description: Email
+        in: path
+        name: email
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.DoctorAppUser'
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /user/first-time-change-password:
+    post:
+      parameters:
+      - description: ChangePassword Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PostChangePasswordDto'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /user/userId/{userId}:
+    get:
+      parameters:
+      - description: UserId
+        in: path
+        name: userId
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.DoctorAppUser'
+      security:
+      - BearerAuth: []
+      tags:
+      - User
+  /vesalius/get-doctor-todo-notification-details/{branchId}/{mcr}/{prn}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      - description: PRN
+        in: path
+        name: prn
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.DoctorToDoNotification'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/get-doctor-todo-notification/{branchId}/{mcr}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.DoctorToDoNotification'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/get-investigation-report/{branchId}/{mcr}/{orderDate}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      - description: OrderDate
+        in: path
+        name: orderDate
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.InvestigationReport'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/get-pdf-investigation-report/{branchId}/{mcr}/{accessionNo}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      - description: AccessionNo
+        in: path
+        name: accessionNo
+        required: true
+        type: string
+      produces:
+      - application/octet-stream
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.InvestigationReport'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/getInpatientQueueDetailByPrn/{branchId}/{mcr}/{prn}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      - description: PRN
+        in: path
+        name: prn
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.InpatientQueueList'
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/getInpatientQueueDetailList/{branchId}/{mcr}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.InpatientQueueList'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/getOutpatientQueueDetailList/{branchId}/{queueCriteria}/{mcr}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: QueueCriteria
+        in: path
+        name: queueCriteria
+        required: true
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.OutpatientQueueList'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/getOutpatientQueueSumarryList/{branchId}/{mcr}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.OutpatientQueueSummary'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/patient-allergy/{branchId}/{prn}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: PRN
+        in: path
+        name: prn
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.NovaPatientAlert'
+            type: array
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/patient-data/{branchId}/{prn}:
+    get:
+      parameters:
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: PRN
+        in: path
+        name: prn
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/xmlmodel.Patient'
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/process-doctor-review-investigation/{branchId}/{mcr}:
+    post:
+      parameters:
+      - description: ProcessDoctorReviewInvestigation Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PostProcessDoctorReviewInvestigationDto'
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+  /vesalius/process-doctor-todo-ack/{branchId}/{mcr}:
+    post:
+      parameters:
+      - description: ProcessDoctorToDoAcknowledge Request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/dto.PostProcessDoctorToDoAcknowledgeDto'
+      - description: BranchId
+        in: path
+        name: branchId
+        type: string
+      - description: MCR
+        in: path
+        name: mcr
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+      security:
+      - BearerAuth: []
+      tags:
+      - Vesalius
+securityDefinitions:
+  BearerAuth:
+    description: Type "Bearer" followed by a space and JWT token.
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"
